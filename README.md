@@ -1,1 +1,0 @@
-# finix-android-payment-sheet-app
