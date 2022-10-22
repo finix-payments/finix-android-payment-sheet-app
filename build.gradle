@@ -7,7 +7,7 @@ buildscript {
         kotlin_version = '1.7.20'
         ktlint_version = '10.0.0'
         google_services = '4.3.10'
-        okhttp_version = "4.9.2"
+        okhttp_version = '5.0.0-alpha.10'
         retrofit_version = "2.9.0"
     }
 
