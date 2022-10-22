@@ -1,0 +1,5 @@
+<resources>
+    <string name="title_activity_payment_sheet">PaymentSheet</string>
+
+    <string name="default_logo_text">Daphne\'s Corner</string>
+</resources>

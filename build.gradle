@@ -1,0 +1,56 @@
+buildscript {
+    ext {
+        compose_version = '1.3.0-rc01'
+        compose_compiler_version = '1.3.2'
+        nav_version = "2.4.1"
+        gradle_version = '7.3.1'
+        kotlin_version = '1.7.20'
+        ktlint_version = '10.0.0'
+        google_services = '4.3.10'
+        okhttp_version = "4.9.2"
+        retrofit_version = "2.9.0"
+    }
+
+
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:$gradle_version"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20"
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:$ktlint_version"
+        classpath "com.google.gms:google-services:$google_services"
+    }
+
+
+}// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    id 'com.android.application' version '7.3.1' apply false
+    id 'com.android.library' version '7.3.1' apply false
+    id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+
+allprojects {
+
+    apply plugin: "org.jlleitschuh.gradle.ktlint"
+
+    /**
+     * ./gradlew ktlintFor
+     * ./gradlew ktlintFormat
+     */
+    // Optionally configure plugin
+    ktlint {
+        version.set("0.39.0")
+//        debug.set(true)
+        disabledRules.set(["no-wildcard-imports"])
+    }
+}
