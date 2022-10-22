@@ -10,16 +10,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.finixpaymentsheet.ui.theme.SampleTokenizeTheme
+import com.example.finixpaymentsheet.ui.theme.PaymentSheetScreen
+import com.example.finixpaymentsheet.ui.theme.FinixTheme
 
-class MainActivity : ComponentActivity() {
+class PaymentSheetActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            SampleTokenizeTheme {
+            FinixTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")
+                    PaymentSheetScreen()
                 }
             }
         }
@@ -34,7 +35,7 @@ fun Greeting(name: String) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    SampleTokenizeTheme {
+    FinixTheme {
         Greeting("Android")
     }
 }

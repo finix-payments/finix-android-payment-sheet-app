@@ -97,7 +97,6 @@ fun AddCardButton(modifier: Modifier = Modifier) {
                 .padding(vertical = 74.dp)
                 .fillMaxWidth()
                 .height(25.dp)
-
         )
     }
 }

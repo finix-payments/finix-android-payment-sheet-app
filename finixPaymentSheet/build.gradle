@@ -71,6 +71,12 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
 
+    // Jetpack Compose Accompanist
+    implementation "com.google.accompanist:accompanist-webview:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-pager:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-flowlayout:$accompanist_version"
+
 
     // Compose
     debugImplementation 'androidx.compose.ui:ui-tooling:1.2.1'
