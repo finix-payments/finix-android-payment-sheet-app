@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">SampleTokenize</string>
+
+    <string name="daphneys_corner">Daphne\'s Corner</string>
+    <string name="empty_string" />
+</resources>
