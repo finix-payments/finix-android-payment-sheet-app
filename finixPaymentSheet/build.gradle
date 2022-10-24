@@ -82,7 +82,9 @@ dependencies {
     debugImplementation 'androidx.compose.ui:ui-tooling:1.2.1'
     implementation 'androidx.compose.ui:ui-viewbinding:1.2.1'
     implementation 'androidx.compose.ui:ui-tooling-preview:1.2.1'
-    implementation 'androidx.compose.material3:material3:1.0.0-rc01'
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
 
+    //material3
+    implementation "androidx.compose.material3:material3:1.0.0-rc01"
+    implementation "androidx.compose.material3:material3-window-size-class:1.0.0-rc01"
 }
