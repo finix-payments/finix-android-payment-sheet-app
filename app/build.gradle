@@ -67,10 +67,11 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
 
-    // Networking
+    //Networking - transitive dependencies
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+    implementation "com.squareup.moshi:moshi-kotlin:1.12.0"
 
 
 
@@ -88,20 +89,13 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
 
-    //The Library
+    //Finix Payment Library
     implementation files('libs/app-release.aar')
 
     //transitive dependencies
     implementation "com.squareup.moshi:moshi:1.13.0"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:1.13.0"
-    //Networking - transitive dependencies
-    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.10"
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
-    implementation "com.squareup.moshi:moshi-kotlin:1.12.0"
-    // Retrofit with Scalar Converter transitive dependencies
-    implementation "com.squareup.retrofit2:converter-scalars:2.9.0"
-    //mask transitive dependencies 
+    //mask transitive dependencies
     implementation 'com.github.SteliosPapamichail:CreditCardHelper:v1.0.0'
 
 }
