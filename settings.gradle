@@ -11,9 +11,15 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+
+        flatDir {
+            dirs 'libs'
+        }
     }
 }
 rootProject.name = "SampleTokenize"
 include ':app'
-include ':paymentSheet'
-include ':finixPaymentSheet'
+//include ':paymentSheet'
+//include ':finixPaymentSheet'
+//include ':FinixPaymentSheet'
+//include ':app-release.aar'
