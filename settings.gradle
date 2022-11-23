@@ -19,7 +19,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "SampleTokenize"
 include ':app'
-//include ':paymentSheet'
-//include ':finixPaymentSheet'
-//include ':FinixPaymentSheet'
-//include ':app-release.aar'
+include ':app-release.aar'
