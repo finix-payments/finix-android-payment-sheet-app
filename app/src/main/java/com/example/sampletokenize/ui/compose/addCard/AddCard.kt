@@ -124,19 +124,28 @@ fun AddCardScreen(
 
     if (showFinixPaymentSheet) {
         PaymentSheetWithResults(
+            // add any methods that would happen once the sheet is dismissed by a side swipe, or leave empty if you don't want anything to happen
             onDismiss = {
                 showFinixPaymentSheet = !showFinixPaymentSheet
                 Toast.makeText(context, "Dialog dismissed!", Toast.LENGTH_SHORT).show()
             },
+            // add any methods that would happen when the user clicks the cancel button, or leave empty if you don't want anything to happen
             onNegativeClick = {
                 showFinixPaymentSheet = !showFinixPaymentSheet
                 Toast.makeText(context, "Negative Button Clicked!", Toast.LENGTH_SHORT).show()
 
             },
+            // add any methods that would happen when the user clicks on the tokenize button and a token response is returned; you should save this token for your own use
             onPositiveClick = { Token ->
                 showFinixPaymentSheet = !showFinixPaymentSheet
                 Toast.makeText(context, "Tokenize Response: $Token", Toast.LENGTH_SHORT).show()
-            }
+            },
+            finixId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID
+            isSandbox = true, // you can change to false to set it to a production environment
+            /** You can use the below fields to customize the paymnet sheet
+            logo = R.drawable.ic_default_logo // this would define the logo that's passed
+            logoText = = R.string.default_logo_text // this would define the title of the payment sheet
+             **/
         )
     }
 
