@@ -90,7 +90,7 @@ dependencies {
 
 
     //Finix Payment Library
-    implementation files('libs/app-release.aar')
+    implementation 'com.finix:finix-android-payment-sheet:0.1.1'
 
     //transitive dependencies
     implementation "com.squareup.moshi:moshi:1.13.0"

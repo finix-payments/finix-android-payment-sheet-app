@@ -1,4 +1,4 @@
-package com.example.sampletokenize.ui.compose
+package com.example.sampletokenize.ui.compose.addCard
 
 import android.widget.Toast
 import androidx.annotation.DrawableRes
@@ -23,11 +23,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.finixpaymentsheet.ui.viewModel.PaymentSheetWithResults
 import com.example.sampletokenize.R
-import com.example.sampletokenize.ui.compose.addCard.AddCardViewModel
 import com.example.sampletokenize.ui.compose.common.HorizontalPartialDivider
 import com.example.sampletokenize.ui.theme.*
+import com.finix.finixpaymentsheet.ui.viewModel.PaymentSheetWithResults
 
 
 @Composable
