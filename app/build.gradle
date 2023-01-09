@@ -62,7 +62,8 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
-    implementation 'com.finix:finix-android-payment-sheet:0.1.0'
+    implementation 'com.finix:finix-android-payment-sheet:0.1.1'
+//    implementation files('/Users/tariq.ebadi/AndroidStudioProjects/finix-android-payment-sheet/finix-android-payment-sheet/build/outputs/aar/finix-android-payment-sheet-release.aar')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
