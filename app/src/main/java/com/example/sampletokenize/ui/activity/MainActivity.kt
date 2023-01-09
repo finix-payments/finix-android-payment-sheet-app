@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.example.sampletokenize.ui.compose.MyAppHome
+import com.example.sampletokenize.ui.compose.addCard.MyAppHome
 import com.example.sampletokenize.ui.theme.SampleTokenizeTheme
 
 class MainActivity : ComponentActivity() {
