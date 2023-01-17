@@ -10,6 +10,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -20,13 +21,18 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.sampletokenize.R
 import com.example.sampletokenize.ui.compose.common.HorizontalPartialDivider
 import com.example.sampletokenize.ui.theme.*
-import com.finix.finixpaymentsheet.ui.viewModel.PaymentSheetWithResults
+import com.finix.finixpaymentsheet.domain.model.PaymentSheetColors
+import com.finix.finixpaymentsheet.ui.viewModel.PaymentSheet
+
 
 
 @Composable
@@ -109,6 +115,7 @@ fun AddCardButton(
 }
 
 
+
 @Composable
 fun AddCardScreen(
     modifier: Modifier = Modifier
@@ -119,10 +126,24 @@ fun AddCardScreen(
     val state = viewModel.state
 
     var showFinixPaymentSheet by remember { mutableStateOf(false) }
+    var tokenResponse by remember { mutableStateOf("") }
     val context = LocalContext.current
+    val paymentSheetColors = PaymentSheetColors(
+        surface = pink,
+        errorContainerColor = FinixErrorTextSurface,
+        containerColor = FinixGray,
+        focusedIndicatorColor = FinixBlue,
+        unfocusedIndicatorColor = Color.Transparent, //hide the indicator
+        focusedLabelColor = FinixBlue,
+        unfocusedLabelColor = Color.Black, //Label text color
+        errorBorderColor = FinixErrorRed,
+        errorLabelColor = FinixErrorRed,
+        tokenizeButtonColor = FinixBlue,
+        cancelButtonColor = FinixRed
+    )
 
     if (showFinixPaymentSheet) {
-        PaymentSheetWithResults(
+        PaymentSheet(
             // add any methods that would happen once the sheet is dismissed by a side swipe, or leave empty if you don't want anything to happen
             onDismiss = {
                 showFinixPaymentSheet = !showFinixPaymentSheet
@@ -138,6 +159,8 @@ fun AddCardScreen(
             onPositiveClick = { Token ->
                 showFinixPaymentSheet = !showFinixPaymentSheet
                 Toast.makeText(context, "Tokenize Response: $Token", Toast.LENGTH_SHORT).show()
+                tokenResponse = Token.toString()
+
             },
             finixId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID
             isSandbox = true, // you can change to false to set it to a production environment
@@ -145,7 +168,35 @@ fun AddCardScreen(
             logo = R.drawable.ic_default_logo // this would define the logo that's passed
             logoText = = R.string.default_logo_text // this would define the title of the payment sheet
              **/
+            paymentSheetColors = paymentSheetColors,
         )
+    }
+
+    if(tokenResponse.isNotBlank()){
+
+        Dialog(
+            onDismissRequest ={
+                tokenResponse = ""
+            },
+            DialogProperties(dismissOnBackPress = true, dismissOnClickOutside = false)
+        ) {
+            Box(
+                contentAlignment= Alignment.Center,
+                modifier = Modifier
+                    .size(400.dp)
+                    .background(White, shape = RoundedCornerShape(8.dp))
+                    .padding(14.dp)
+            ) {
+                SelectionContainer {
+                    Text(
+                        text = tokenResponse,
+                        textAlign = TextAlign.Center
+                    )
+                }
+
+            }
+        }
+
     }
 
 
