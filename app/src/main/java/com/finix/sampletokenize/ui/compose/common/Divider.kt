@@ -1,4 +1,4 @@
-package com.example.sampletokenize.ui.compose.common
+package com.finix.sampletokenize.ui.compose.common
 
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.example.sampletokenize.ui.theme.lightGray
+import com.finix.sampletokenize.ui.theme.lightGray
 
 @Composable
 fun HorizontalDivider() {
@@ -18,7 +18,7 @@ fun HorizontalDivider() {
         modifier = Modifier
             .height(1.dp)
             .fillMaxWidth(),
-        color = Color.Gray
+        color = lightGray
     )
 }
 

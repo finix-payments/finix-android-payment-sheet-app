@@ -1,4 +1,4 @@
-package com.example.sampletokenize.ui.compose.common
+package com.finix.sampletokenize.ui.compose.common
 
 import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable

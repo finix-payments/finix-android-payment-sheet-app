@@ -1,4 +1,4 @@
-package com.example.sampletokenize.ui.theme
+package com.finix.sampletokenize.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

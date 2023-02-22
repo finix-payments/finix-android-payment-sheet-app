@@ -1,4 +1,4 @@
-package com.example.sampletokenize
+package com.finix.sampletokenize
 
 import org.junit.Assert.*
 import org.junit.Test

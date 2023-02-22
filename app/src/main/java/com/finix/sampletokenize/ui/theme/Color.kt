@@ -1,4 +1,4 @@
-package com.example.sampletokenize.ui.theme
+package com.finix.sampletokenize.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
@@ -17,6 +17,7 @@ val White = Color(0xFFEFFFFF)
 val addCardColor = Color(0xFFF6F8FA)
 val lightGray = Color(0xFFD6D6D6)
 val medGray = Color(0xFFC1CACF)
+val highGray = Color(0xFFB5B7BB)
 val pink = Color(0xFFFFC0CB)
 
 val FinixGray = Color(0xFFF6F8FA)
