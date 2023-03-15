@@ -63,6 +63,7 @@ fun PaymentSheetSelectionDialog(viewModel: AddCardViewModel) {
                     Text(
                         text = AnnotatedString("Complete Payment Sheet Outlined"),
                         color = textColor,
+                        overflow = TextOverflow.Ellipsis,
                         modifier = Modifier
                             .align(Alignment.CenterHorizontally)
                             .padding(paddingTop)

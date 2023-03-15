@@ -5,10 +5,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
-import com.finix.finixpaymentsheet.R
 import com.finix.finixpaymentsheet.domain.model.PaymentSheetColors
 import com.finix.finixpaymentsheet.domain.model.PaymentSheetResources
+import com.finix.sampletokenize.R
 import com.finix.sampletokenize.ui.theme.*
+
 
 
 class AddCardViewModel : ViewModel() {
@@ -19,8 +20,8 @@ class AddCardViewModel : ViewModel() {
     init {
         setPaymentSheetResources(
             PaymentSheetResources(
-                logoDrawable = R.drawable.ic_default_logo,
-                logoText= R.string.default_logo_text,
+                logoDrawable = R.drawable.ic_logo,
+                logoText= R.string.daphneys_corner,
                 tokenizeButtonText = R.string.btn_tokenize,
                 cancelButtonText = R.string.btn_cancel
             )
@@ -54,7 +55,7 @@ class AddCardViewModel : ViewModel() {
 
 
     fun setTokenResponse(response: String){
-        state = state.copy(tokenResponse = response)
+        state = state.copy(tokenResponseString = response)
     }
 
     fun setShowFinixPaymentSheetSelection(show: Boolean){

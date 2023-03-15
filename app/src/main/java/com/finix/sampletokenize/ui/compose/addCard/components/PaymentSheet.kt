@@ -3,8 +3,7 @@ package com.finix.sampletokenize.ui.compose.addCard.components
 import android.content.Context
 import android.widget.Toast
 import androidx.compose.runtime.Composable
-import com.finix.finixpaymentsheet.domain.model.PaymentSheetResources
-import com.finix.finixpaymentsheet.ui.viewModel.*
+import com.finix.finixpaymentsheet.ui.viewModel.paymentSheet.*
 import com.finix.sampletokenize.ui.compose.addCard.AddCardViewModel
 
 
@@ -26,31 +25,27 @@ fun ShowCompletePaymentSheetOutlined(viewModel: AddCardViewModel, context: Conte
         onDismiss = {
             viewModel.setShowCompletePaymentSheetOutlined(false)
             viewModel.setShowFinixPaymentSheetSelection(show = true)
-            Toast.makeText(context, "Dialog dismissed!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "onDismiss!", Toast.LENGTH_SHORT).show()
         },
         // add any methods that would happen when the user clicks the cancel button, or leave empty if you don't want anything to happen
         onNegativeClick = {
             viewModel.setShowCompletePaymentSheetOutlined(false)
             viewModel.setShowFinixPaymentSheetSelection(show = true)
-            Toast.makeText(context, "Negative Button Clicked!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "onNegativeClick", Toast.LENGTH_SHORT).show()
 
         },
         // add any methods that would happen when the user clicks on the tokenize button and a token response is returned; you should save this token for your own use
         onPositiveClick = { Token ->
             viewModel.setShowCompletePaymentSheetOutlined(false)
             viewModel.setShowFinixPaymentSheetSelection(show = true)
-            Toast.makeText(context, "Tokenize Response: $Token", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "onPositiveClick: Response: $Token", Toast.LENGTH_SHORT).show()
             viewModel.setTokenResponse(Token.toString())
 
         },
-        finixId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
+        applicationId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
         isSandbox = true, // change to false for live
         paymentSheetColors = viewModel.state.paymentSheetColors, // optional
-        paymentSheetResources = PaymentSheetResources(
-//            logoText = R.string.empty_string,
-//            tokenizeButtonText = R.string.empty_string,
-//            cancelButtonText = R.string.empty_string,
-        ), // optional
+        paymentSheetResources = viewModel.state.paymentSheetResources, // optional
     )
 
 }
@@ -76,7 +71,7 @@ fun ShowPartialPaymentSheetOutlined(viewModel: AddCardViewModel, context: Contex
             viewModel.setTokenResponse(Token.toString())
 
         },
-        finixId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
+        applicationId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
         isSandbox = true, // change to false for live
         paymentSheetColors = viewModel.state.paymentSheetColors, // optional
         paymentSheetResources = viewModel.state.paymentSheetResources, // optional
@@ -106,7 +101,7 @@ fun ShowBasicPaymentSheetOutlined(viewModel: AddCardViewModel, context: Context)
 
         },
 
-        finixId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
+        applicationId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
         isSandbox = true, // change to false for live
         paymentSheetColors = viewModel.state.paymentSheetColors, // optional
         paymentSheetResources = viewModel.state.paymentSheetResources, // optional
@@ -136,7 +131,7 @@ fun ShowMinimalPaymentSheetOutlined(viewModel: AddCardViewModel, context: Contex
 
         },
 
-        finixId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
+        applicationId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
         isSandbox = true, // change to false for live
         paymentSheetColors = viewModel.state.paymentSheetColors, // optional
         paymentSheetResources = viewModel.state.paymentSheetResources, // optional
@@ -166,7 +161,7 @@ fun ShowCompletePaymentSheet(viewModel: AddCardViewModel, context: Context) {
 
         },
 
-        finixId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
+        applicationId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
         isSandbox = true, // change to false for live
         paymentSheetColors = viewModel.state.paymentSheetColors, // optional
         paymentSheetResources = viewModel.state.paymentSheetResources, // optional
@@ -195,7 +190,7 @@ fun ShowPartialPaymentSheet(viewModel: AddCardViewModel, context: Context) {
             viewModel.setTokenResponse(Token.toString())
 
         },
-        finixId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
+        applicationId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
         isSandbox = true, // change to false for live
         paymentSheetColors = viewModel.state.paymentSheetColors, // optional
         paymentSheetResources = viewModel.state.paymentSheetResources, // optional
@@ -224,7 +219,7 @@ fun ShowBasicPaymentSheet(viewModel: AddCardViewModel, context: Context) {
             viewModel.setTokenResponse(Token.toString())
 
         },
-        finixId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
+        applicationId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
         isSandbox = true, // change to false for live
         paymentSheetColors = viewModel.state.paymentSheetColors, // optional
         paymentSheetResources = viewModel.state.paymentSheetResources, // optional
@@ -253,7 +248,7 @@ fun ShowMinimalPaymentSheet(viewModel: AddCardViewModel, context: Context) {
             viewModel.setTokenResponse(Token.toString())
 
         },
-        finixId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
+        applicationId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
         isSandbox = true, // change to false for live
         paymentSheetColors = viewModel.state.paymentSheetColors, // optional
         paymentSheetResources = viewModel.state.paymentSheetResources, // optional

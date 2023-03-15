@@ -3,11 +3,13 @@ package com.finix.sampletokenize.ui.compose.addCard
 
 import com.finix.finixpaymentsheet.domain.model.PaymentSheetResources
 import com.finix.finixpaymentsheet.domain.model.PaymentSheetColors
+import com.finix.finixpaymentsheet.domain.model.tokenize.TokenizedResponse
 
 
 data class AddCardState(
 
-    val tokenResponse: String = "",
+    val tokenResponseString: String = "",
+    val tokenResponse: TokenizedResponse? = null,
 
     val showFinixPaymentSheetSelection: Boolean = false,
 
@@ -33,12 +35,7 @@ data class AddCardState(
         @StringRes val cancelButtonText: Int = R.string.btn_cancel,
      *
      */
-    val paymentSheetResources: PaymentSheetResources = PaymentSheetResources(
-        logoDrawable = 0,
-        logoText = 0,
-        tokenizeButtonText = 0,
-        cancelButtonText = 0,
-    ),
+    val paymentSheetResources: PaymentSheetResources = PaymentSheetResources(),
 
 
     /**

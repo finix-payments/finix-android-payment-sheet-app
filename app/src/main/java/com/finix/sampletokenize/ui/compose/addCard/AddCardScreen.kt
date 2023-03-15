@@ -19,8 +19,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.finix.sampletokenize.R
 import com.finix.sampletokenize.ui.compose.common.HorizontalPartialDivider
 import com.finix.sampletokenize.ui.theme.*
-import com.finix.finixpaymentsheet.R.drawable.*
-import com.finix.finixpaymentsheet.R.string.*
 import com.finix.finixpaymentsheet.ui.viewModel.*
 import com.finix.sampletokenize.ui.compose.addCard.components.*
 
@@ -75,7 +73,7 @@ fun AddCardScreen(
     }
 
 
-    if(state.tokenResponse.isNotBlank()){
+    if(state.tokenResponseString.isNotBlank()){
         Dialog(
             onDismissRequest ={
                 viewModel.setTokenResponse("")
@@ -92,7 +90,7 @@ fun AddCardScreen(
             ) {
                 SelectionContainer {
                     Text(
-                        text = state.tokenResponse,
+                        text = state.tokenResponseString,
                         textAlign = TextAlign.Center
                     )
                 }
