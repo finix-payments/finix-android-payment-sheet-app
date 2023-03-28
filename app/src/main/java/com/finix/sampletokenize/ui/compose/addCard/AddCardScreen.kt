@@ -30,15 +30,8 @@ fun AddCardScreen(
 
     val viewModel = viewModel<AddCardViewModel>()
     val state = viewModel.state
-
     val context = LocalContext.current
 
-    SampleTokenizeTheme2() {
-        if (state.showFinixPaymentSheetSelection) {
-            PaymentSheetSelectionDialog(viewModel = viewModel)
-        }
-
-    }
 
     /**
      * These are all the payment sheet variations available,
@@ -61,43 +54,9 @@ fun AddCardScreen(
      * ShowMinimalPaymentSheet
      *
      */
-    when{
-        state.showCompletePaymentSheetOutlined -> { ShowCompletePaymentSheetOutlined(viewModel = viewModel, context = context) }
-        state.showPartialPaymentSheetOutlined -> { ShowPartialPaymentSheetOutlined(viewModel = viewModel, context = context) }
-        state.showBasicPaymentSheetOutlined -> { ShowBasicPaymentSheetOutlined(viewModel = viewModel, context = context) }
-        state.showMinimalPaymentSheetOutlined -> { ShowMinimalPaymentSheetOutlined(viewModel = viewModel, context = context) }
-        state.showCompletePaymentSheet -> { ShowCompletePaymentSheet(viewModel = viewModel, context = context) }
-        state.showPartialPaymentSheet -> { ShowPartialPaymentSheet(viewModel = viewModel, context = context) }
-        state.showBasicPaymentSheet -> { ShowBasicPaymentSheet(viewModel = viewModel, context = context) }
-        state.showMinimalPaymentSheet -> { ShowMinimalPaymentSheet(viewModel = viewModel, context = context)  }
-    }
 
 
-    if(state.tokenResponseString.isNotBlank()){
-        Dialog(
-            onDismissRequest ={
-                viewModel.setTokenResponse("")
-            },
 
-            DialogProperties(dismissOnBackPress = true, dismissOnClickOutside = false)
-        ) {
-            Box(
-                contentAlignment= Alignment.Center,
-                modifier = Modifier
-                    .size(400.dp)
-                    .background(White, shape = RoundedCornerShape(8.dp))
-                    .padding(14.dp)
-            ) {
-                SelectionContainer {
-                    Text(
-                        text = state.tokenResponseString,
-                        textAlign = TextAlign.Center
-                    )
-                }
-            }
-        }
-
-    }
 
     Box(modifier = modifier, contentAlignment = Alignment.BottomCenter){
         Banner()
@@ -121,7 +80,7 @@ fun AddCardScreen(
         HorizontalPartialDivider(widthDP = 321.dp)
         AddCardButton(
             onClick = { clicked ->
-                viewModel.setShowFinixPaymentSheetSelection(clicked)
+                //TODO when this button is clicked, we should show the payment sheet we've selected
             }
         )
     }

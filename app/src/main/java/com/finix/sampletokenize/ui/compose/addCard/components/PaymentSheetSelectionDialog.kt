@@ -33,7 +33,9 @@ fun PaymentSheetSelectionDialog(viewModel: AddCardViewModel) {
     val paddingTop = 14.dp
     val cardColorbg = CardDefaults.cardColors(Color.White)
     Dialog(
-        onDismissRequest = { viewModel.setShowFinixPaymentSheetSelection(show = false) },
+        onDismissRequest = {
+
+        },
         properties = DialogProperties(
             usePlatformDefaultWidth = false
         )

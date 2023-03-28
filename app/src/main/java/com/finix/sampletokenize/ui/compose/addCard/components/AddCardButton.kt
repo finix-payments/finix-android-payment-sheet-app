@@ -1,4 +1,4 @@
-package com.finix.sampletokenize.ui.compose.addCard
+package com.finix.sampletokenize.ui.compose.addCard.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image

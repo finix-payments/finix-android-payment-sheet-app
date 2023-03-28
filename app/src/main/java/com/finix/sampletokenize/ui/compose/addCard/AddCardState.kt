@@ -11,8 +11,6 @@ data class AddCardState(
     val tokenResponseString: String = "",
     val tokenResponse: TokenizedResponse? = null,
 
-    val showFinixPaymentSheetSelection: Boolean = false,
-
     val showCompletePaymentSheetOutlined: Boolean = false,
     val showPartialPaymentSheetOutlined: Boolean = false,
     val showBasicPaymentSheetOutlined: Boolean = false,

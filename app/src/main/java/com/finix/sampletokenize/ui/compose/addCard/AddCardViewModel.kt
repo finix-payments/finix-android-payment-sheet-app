@@ -17,50 +17,10 @@ class AddCardViewModel : ViewModel() {
     var state by mutableStateOf(AddCardState())
 
 
-    init {
-        setPaymentSheetResources(
-            PaymentSheetResources(
-                logoDrawable = R.drawable.ic_logo,
-                logoText= R.string.daphneys_corner,
-                tokenizeButtonText = R.string.btn_tokenize,
-                cancelButtonText = R.string.btn_cancel
-            )
-        )
-
-        setPaymentSheetColors(
-            PaymentSheetColors(
-                surface = Color.White,
-                errorContainerColor = FinixErrorTextSurface,
-                containerColor = FinixGray,
-                focusedIndicatorColor = FinixBlue,
-                unfocusedIndicatorColor = Color.Transparent,
-                focusedLabelColor = FinixBlue,
-                unfocusedLabelColor = Color.Black,
-                errorBorderColor = FinixErrorRed,
-                errorLabelColor = FinixErrorRed,
-                tokenizeButtonColor = FinixBlue,
-                cancelButtonColor = FinixRed
-            )
-        )
-
-    }
-
-    fun setPaymentSheetResources(resources: PaymentSheetResources){
-        state = state.copy(paymentSheetResources = resources)
-    }
-
-    fun setPaymentSheetColors(paymentSheetColors: PaymentSheetColors){
-        state = state.copy(paymentSheetColors = paymentSheetColors)
-    }
-
-
     fun setTokenResponse(response: String){
         state = state.copy(tokenResponseString = response)
     }
 
-    fun setShowFinixPaymentSheetSelection(show: Boolean){
-        state = state.copy(showFinixPaymentSheetSelection = show)
-    }
     fun setShowCompletePaymentSheetOutlined(show: Boolean){
         state = state.copy(showCompletePaymentSheetOutlined = show)
     }
