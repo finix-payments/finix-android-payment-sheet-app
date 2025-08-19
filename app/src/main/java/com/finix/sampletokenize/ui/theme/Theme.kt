@@ -4,7 +4,6 @@ import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
-import androidx.compose.material.ripple.RippleTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
@@ -144,21 +143,3 @@ fun SampleTokenizeTheme2(
         content = content
     )
 }
-
-
-
-@Immutable
-private object SecondaryRippleTheme : RippleTheme {
-    @Composable
-    override fun defaultColor() = RippleTheme.defaultRippleColor(
-        contentColor = androidx.compose.material3.MaterialTheme.colorScheme.secondary,
-        lightTheme = androidx.compose.material3.MaterialTheme.colorScheme.isLight()
-    )
-
-    @Composable
-    override fun rippleAlpha() = RippleTheme.defaultRippleAlpha(
-        contentColor = androidx.compose.material3.MaterialTheme.colorScheme.secondary,
-        lightTheme = androidx.compose.material3.MaterialTheme.colorScheme.isLight()
-    )
-}
-
