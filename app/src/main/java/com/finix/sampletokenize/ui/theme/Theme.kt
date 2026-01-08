@@ -4,18 +4,19 @@ import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
-import androidx.compose.material.ripple.RippleTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
-import com.finix.sampletokenize.ui.compose.common.isLight
-import com.finix.finixpaymentsheet.ui.theme.*
+import com.finix.finixpaymentsheet.ui.theme.Pink40
+import com.finix.finixpaymentsheet.ui.theme.Pink80
+import com.finix.finixpaymentsheet.ui.theme.Purple40
+import com.finix.finixpaymentsheet.ui.theme.PurpleGrey40
+import com.finix.finixpaymentsheet.ui.theme.PurpleGrey80
 
 
 private val DarkColorPalette2 = darkColors(
@@ -146,19 +147,4 @@ fun SampleTokenizeTheme2(
 }
 
 
-
-@Immutable
-private object SecondaryRippleTheme : RippleTheme {
-    @Composable
-    override fun defaultColor() = RippleTheme.defaultRippleColor(
-        contentColor = androidx.compose.material3.MaterialTheme.colorScheme.secondary,
-        lightTheme = androidx.compose.material3.MaterialTheme.colorScheme.isLight()
-    )
-
-    @Composable
-    override fun rippleAlpha() = RippleTheme.defaultRippleAlpha(
-        contentColor = androidx.compose.material3.MaterialTheme.colorScheme.secondary,
-        lightTheme = androidx.compose.material3.MaterialTheme.colorScheme.isLight()
-    )
-}
 

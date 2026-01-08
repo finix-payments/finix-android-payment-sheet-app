@@ -1,6 +1,8 @@
 *.iml
 .gradle
 /local.properties
+/.idea
+/.gradle
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
@@ -54,3 +56,4 @@ captures/
 
 # Release keystore properties
 keystore.properties
+/.idea/
