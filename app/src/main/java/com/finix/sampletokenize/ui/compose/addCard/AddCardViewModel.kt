@@ -36,7 +36,6 @@ class AddCardViewModel : ViewModel() {
                 unfocusedIndicatorColor = Color.Transparent,
                 focusedLabelColor = FinixBlue,
                 unfocusedLabelColor = Color.Black,
-                errorBorderColor = FinixErrorRed,
                 errorLabelColor = FinixErrorRed,
                 tokenizeButtonColor = FinixBlue,
                 cancelButtonColor = FinixRed

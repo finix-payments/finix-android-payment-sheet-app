@@ -229,7 +229,7 @@ fun ShowBasicPaymentSheet(viewModel: AddCardViewModel, context: Context) {
 
 @Composable
 fun ShowMinimalPaymentSheet(viewModel: AddCardViewModel, context: Context) {
-    MinimalPaymentSheet(
+    InternationalPaymentSheet(
         // add any methods that would happen once the sheet is dismissed by a side swipe, or leave empty if you don't want anything to happen
         onDismiss = {
             viewModel.setShowMinimalPaymentSheet(false)
@@ -249,7 +249,7 @@ fun ShowMinimalPaymentSheet(viewModel: AddCardViewModel, context: Context) {
 
         },
         applicationId = "APjMB6owJ7542dehJ6hCojzR", // change to your own application ID, otherwise sandbox id will be used
-        isSandbox = true, // change to false for live
+        isSandbox = false, // change to false for live
         paymentSheetColors = viewModel.state.paymentSheetColors, // optional
         paymentSheetResources = viewModel.state.paymentSheetResources, // optional
     )
