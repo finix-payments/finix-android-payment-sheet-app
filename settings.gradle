@@ -1,5 +1,12 @@
 pluginManagement {
     repositories {
+        maven {
+            url = uri("https://finix.repo.sonatype.app/repository/finix-maven/")
+            credentials {
+                username = System.getenv("NEXUS_TOKEN_USER")
+                password = System.getenv("NEXUS_TOKEN_PASSWORD")
+            }
+        }
         gradlePluginPortal()
         google()
         mavenCentral()
@@ -11,6 +18,13 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
+        maven {
+            url = uri("https://finix.repo.sonatype.app/repository/finix-maven/")
+            credentials {
+                username = System.getenv("NEXUS_TOKEN_USER")
+                password = System.getenv("NEXUS_TOKEN_PASSWORD")
+            }
+        }
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
