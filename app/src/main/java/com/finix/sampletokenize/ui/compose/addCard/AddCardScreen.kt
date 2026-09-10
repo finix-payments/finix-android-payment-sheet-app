@@ -19,7 +19,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.finix.sampletokenize.R
 import com.finix.sampletokenize.ui.compose.common.HorizontalPartialDivider
 import com.finix.sampletokenize.ui.theme.*
-import com.finix.finixpaymentsheet.ui.viewModel.*
 import com.finix.sampletokenize.ui.compose.addCard.components.*
 
 
@@ -41,35 +40,19 @@ fun AddCardScreen(
     }
 
     /**
-     * These are all the payment sheet variations available,
-     *
-     * options are COMPLETE, PARTIAL, BASIC, MINIMAL,
-     * variations are 1. default 2. Outlined
-     *
-     *  COMPLETE: Name, Card, Expiry, CVV, Address && address Ext, City, State, Zip
+     * Payment sheet variants:
+     *  COMPLETE: Name, Card, Expiry, CVV, Address, City, State, Zip
      *  PARTIAL: Name, Card, Expiry, CVV, Zip
      *  BASIC: Name, Card, Expiry, CVV
      *  MINIMAL: Card, Expiry, CVV
-     *
-     * ShowCompletePaymentSheetOutlined
-     * ShowPartialPaymentSheetOutlined
-     * ShowBasicPaymentSheetOutlined
-     * ShowMinimalPaymentSheetOutlined
-     * ShowCompletePaymentSheet
-     * ShowPartialPaymentSheet
-     * ShowBasicPaymentSheet
-     * ShowMinimalPaymentSheet
-     *
+     *  INTERNATIONAL: Card, Expiry, CVV + country/postal code
      */
-    when{
-        state.showCompletePaymentSheetOutlined -> { ShowCompletePaymentSheetOutlined(viewModel = viewModel, context = context) }
-        state.showPartialPaymentSheetOutlined -> { ShowPartialPaymentSheetOutlined(viewModel = viewModel, context = context) }
-        state.showBasicPaymentSheetOutlined -> { ShowBasicPaymentSheetOutlined(viewModel = viewModel, context = context) }
-        state.showMinimalPaymentSheetOutlined -> { ShowMinimalPaymentSheetOutlined(viewModel = viewModel, context = context) }
-        state.showCompletePaymentSheet -> { ShowCompletePaymentSheet(viewModel = viewModel, context = context) }
-        state.showPartialPaymentSheet -> { ShowPartialPaymentSheet(viewModel = viewModel, context = context) }
-        state.showBasicPaymentSheet -> { ShowBasicPaymentSheet(viewModel = viewModel, context = context) }
-        state.showMinimalPaymentSheet -> { ShowMinimalPaymentSheet(viewModel = viewModel, context = context)  }
+    when {
+        state.showCompletePaymentSheet -> ShowCompletePaymentSheet(viewModel = viewModel, context = context)
+        state.showPartialPaymentSheet -> ShowPartialPaymentSheet(viewModel = viewModel, context = context)
+        state.showBasicPaymentSheet -> ShowBasicPaymentSheet(viewModel = viewModel, context = context)
+        state.showMinimalPaymentSheet -> ShowMinimalPaymentSheet(viewModel = viewModel, context = context)
+        state.showInternationalPaymentSheet -> ShowInternationalPaymentSheet(viewModel = viewModel, context = context)
     }
 
 

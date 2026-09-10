@@ -31,135 +31,31 @@ import com.finix.sampletokenize.ui.theme.Typography
 fun PaymentSheetSelectionDialog(viewModel: AddCardViewModel) {
     val textColor = Color.Black
     val paddingTop = 14.dp
-    val cardColorbg = CardDefaults.cardColors(Color.White)
+    val cardColorBg = CardDefaults.cardColors(Color.White)
     Dialog(
         onDismissRequest = { viewModel.setShowFinixPaymentSheetSelection(show = false) },
-        properties = DialogProperties(
-            usePlatformDefaultWidth = false
-        )
+        properties = DialogProperties(usePlatformDefaultWidth = false)
     ) {
         Column(
             modifier = Modifier
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 32.dp)
                 .height(400.dp)
-                .background(
-                    color = Color.Transparent,
-                    shape = RoundedCornerShape(18.dp)
-                ),
+                .background(color = Color.Transparent, shape = RoundedCornerShape(18.dp)),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Card(
-                colors = cardColorbg,
-                onClick = {
-                    viewModel.setShowCompletePaymentSheetOutlined(true)
-                },
+                colors = cardColorBg,
+                onClick = { viewModel.setShowCompletePaymentSheet(true) },
                 elevation = CardDefaults.cardElevation(6.dp),
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth(),
+                modifier = Modifier.weight(1f).fillMaxWidth(),
                 shape = RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp),
-                content = {
-                    Text(
-                        text = AnnotatedString("Complete Payment Sheet Outlined"),
-                        color = textColor,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
-                            .padding(paddingTop)
-                    )
-                }
-            )
-
-            HorizontalDivider()
-
-            Card(
-                onClick = {
-                    viewModel.setShowPartialPaymentSheetOutlined(true)
-                },
-                elevation = CardDefaults.cardElevation(6.dp),
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(0.dp),
-                content = {
-                    Text(
-                        text = AnnotatedString("Partial Payment Sheet Outlined"),
-                        color = textColor,
-                        style = Typography.bodyLarge,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
-                            .padding(paddingTop)
-                    )
-                }
-            )
-
-            HorizontalDivider()
-
-            Card(
-                onClick = {
-                    viewModel.setShowBasicPaymentSheetOutlined(true)
-                },
-                elevation = CardDefaults.cardElevation(6.dp),
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(0.dp),
-                content = {
-                    Text(
-                        text = AnnotatedString("Basic Payment Sheet Outlined"),
-                        color = textColor,
-                        style = Typography.bodyLarge,
-                        modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
-                            .padding(paddingTop)
-                    )
-                }
-            )
-
-            HorizontalDivider()
-
-            Card(
-                onClick = {
-                    viewModel.setShowMinimalPaymentSheetOutlined(true)
-                },
-                elevation = CardDefaults.cardElevation(6.dp),
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(0.dp),
-                content = {
-                    Text(
-                        text = AnnotatedString("Minimal Payment Sheet Outlined"),
-                        color = textColor,
-                        style = Typography.bodyLarge,
-                        modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
-                            .padding(paddingTop)
-                    )
-                }
-            )
-
-            HorizontalDivider()
-
-            Card(
-                onClick = {
-                    viewModel.setShowCompletePaymentSheet(true)
-                },
-                elevation = CardDefaults.cardElevation(6.dp),
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(0.dp),
                 content = {
                     Text(
                         text = AnnotatedString("Complete Payment Sheet"),
                         color = textColor,
-                        style = Typography.bodyLarge,
-                        modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
-                            .padding(paddingTop)
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.align(Alignment.CenterHorizontally).padding(paddingTop)
                     )
                 }
             )
@@ -167,66 +63,72 @@ fun PaymentSheetSelectionDialog(viewModel: AddCardViewModel) {
             HorizontalDivider()
 
             Card(
-                onClick = {
-                    viewModel.setShowPartialPaymentSheet(true)
-                },
+                colors = cardColorBg,
+                onClick = { viewModel.setShowPartialPaymentSheet(true) },
                 elevation = CardDefaults.cardElevation(6.dp),
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth(),
+                modifier = Modifier.weight(1f).fillMaxWidth(),
                 shape = RoundedCornerShape(0.dp),
                 content = {
                     Text(
                         text = AnnotatedString("Partial Payment Sheet"),
                         color = textColor,
                         style = Typography.bodyLarge,
-                        modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
-                            .padding(paddingTop)
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.align(Alignment.CenterHorizontally).padding(paddingTop)
                     )
                 }
             )
+
             HorizontalDivider()
 
             Card(
-                onClick = {
-                    viewModel.setShowBasicPaymentSheet(true)
-                },
+                colors = cardColorBg,
+                onClick = { viewModel.setShowBasicPaymentSheet(true) },
                 elevation = CardDefaults.cardElevation(6.dp),
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth(),
+                modifier = Modifier.weight(1f).fillMaxWidth(),
                 shape = RoundedCornerShape(0.dp),
                 content = {
                     Text(
                         text = AnnotatedString("Basic Payment Sheet"),
                         color = textColor,
                         style = Typography.bodyLarge,
-                        modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
-                            .padding(paddingTop)
+                        modifier = Modifier.align(Alignment.CenterHorizontally).padding(paddingTop)
                     )
                 }
             )
+
             HorizontalDivider()
 
             Card(
-                onClick = {
-                    viewModel.setShowMinimalPaymentSheet(true)
-                },
+                colors = cardColorBg,
+                onClick = { viewModel.setShowMinimalPaymentSheet(true) },
                 elevation = CardDefaults.cardElevation(6.dp),
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth(),
-                shape = RoundedCornerShape(bottomEnd = 10.dp, bottomStart = 10.dp),
+                modifier = Modifier.weight(1f).fillMaxWidth(),
+                shape = RoundedCornerShape(0.dp),
                 content = {
                     Text(
                         text = AnnotatedString("Minimal Payment Sheet"),
                         color = textColor,
                         style = Typography.bodyLarge,
-                        modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
-                            .padding(paddingTop)
+                        modifier = Modifier.align(Alignment.CenterHorizontally).padding(paddingTop)
+                    )
+                }
+            )
+
+            HorizontalDivider()
+
+            Card(
+                colors = cardColorBg,
+                onClick = { viewModel.setShowInternationalPaymentSheet(true) },
+                elevation = CardDefaults.cardElevation(6.dp),
+                modifier = Modifier.weight(1f).fillMaxWidth(),
+                shape = RoundedCornerShape(bottomEnd = 10.dp, bottomStart = 10.dp),
+                content = {
+                    Text(
+                        text = AnnotatedString("International Payment Sheet"),
+                        color = textColor,
+                        style = Typography.bodyLarge,
+                        modifier = Modifier.align(Alignment.CenterHorizontally).padding(paddingTop)
                     )
                 }
             )

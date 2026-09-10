@@ -12,12 +12,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
-import com.finix.finixpaymentsheet.ui.theme.Pink40
-import com.finix.finixpaymentsheet.ui.theme.Pink80
-import com.finix.finixpaymentsheet.ui.theme.Purple40
-import com.finix.finixpaymentsheet.ui.theme.PurpleGrey40
-import com.finix.finixpaymentsheet.ui.theme.PurpleGrey80
-
 
 private val DarkColorPalette2 = darkColors(
     primary = Purple200,
