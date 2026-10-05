@@ -1,145 +1,182 @@
 package com.finix.sampletokenize.ui.compose.addCard
 
-
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.finix.sampletokenize.R
+import com.finix.sampletokenize.ui.compose.addCard.components.PaymentSheetSelectionDialog
+import com.finix.sampletokenize.ui.compose.addCard.components.ShowPaymentSheet
 import com.finix.sampletokenize.ui.compose.common.HorizontalPartialDivider
-import com.finix.sampletokenize.ui.theme.*
-import com.finix.finixpaymentsheet.ui.viewModel.*
-import com.finix.sampletokenize.ui.compose.addCard.components.*
-
+import com.finix.sampletokenize.ui.compose.configuration.ConfigurationScreen
+import com.finix.sampletokenize.ui.theme.FinixErrorRed
+import com.finix.sampletokenize.ui.theme.White
 
 @Composable
-fun AddCardScreen(
-    modifier: Modifier = Modifier
-) {
-
+fun AddCardScreen(modifier: Modifier = Modifier) {
     val viewModel = viewModel<AddCardViewModel>()
     val state = viewModel.state
 
-    val context = LocalContext.current
-
-    SampleTokenizeTheme2() {
-        if (state.showFinixPaymentSheetSelection) {
-            PaymentSheetSelectionDialog(viewModel = viewModel)
+    when (state.screen) {
+        DemoScreen.MAIN -> MainDemoScreen(viewModel = viewModel, modifier = modifier)
+        DemoScreen.CONFIGURATION -> {
+            BackHandler(onBack = viewModel::closeConfiguration)
+            ConfigurationScreen(
+                modifier = modifier,
+                state = state.configForm,
+                onFormChange = viewModel::updateConfigForm,
+                onDone = viewModel::closeConfiguration
+            )
         }
-
     }
-
-    /**
-     * These are all the payment sheet variations available,
-     *
-     * options are COMPLETE, PARTIAL, BASIC, MINIMAL,
-     * variations are 1. default 2. Outlined
-     *
-     *  COMPLETE: Name, Card, Expiry, CVV, Address && address Ext, City, State, Zip
-     *  PARTIAL: Name, Card, Expiry, CVV, Zip
-     *  BASIC: Name, Card, Expiry, CVV
-     *  MINIMAL: Card, Expiry, CVV
-     *
-     * ShowCompletePaymentSheetOutlined
-     * ShowPartialPaymentSheetOutlined
-     * ShowBasicPaymentSheetOutlined
-     * ShowMinimalPaymentSheetOutlined
-     * ShowCompletePaymentSheet
-     * ShowPartialPaymentSheet
-     * ShowBasicPaymentSheet
-     * ShowMinimalPaymentSheet
-     *
-     */
-    when{
-        state.showCompletePaymentSheetOutlined -> { ShowCompletePaymentSheetOutlined(viewModel = viewModel, context = context) }
-        state.showPartialPaymentSheetOutlined -> { ShowPartialPaymentSheetOutlined(viewModel = viewModel, context = context) }
-        state.showBasicPaymentSheetOutlined -> { ShowBasicPaymentSheetOutlined(viewModel = viewModel, context = context) }
-        state.showMinimalPaymentSheetOutlined -> { ShowMinimalPaymentSheetOutlined(viewModel = viewModel, context = context) }
-        state.showCompletePaymentSheet -> { ShowCompletePaymentSheet(viewModel = viewModel, context = context) }
-        state.showPartialPaymentSheet -> { ShowPartialPaymentSheet(viewModel = viewModel, context = context) }
-        state.showBasicPaymentSheet -> { ShowBasicPaymentSheet(viewModel = viewModel, context = context) }
-        state.showMinimalPaymentSheet -> { ShowMinimalPaymentSheet(viewModel = viewModel, context = context)  }
-    }
-
-
-    if(state.tokenResponseString.isNotBlank()){
-        Dialog(
-            onDismissRequest ={
-                viewModel.setTokenResponse("")
-            },
-
-            DialogProperties(dismissOnBackPress = true, dismissOnClickOutside = false)
-        ) {
-            Box(
-                contentAlignment= Alignment.Center,
-                modifier = Modifier
-                    .size(400.dp)
-                    .background(White, shape = RoundedCornerShape(8.dp))
-                    .padding(14.dp)
-            ) {
-                SelectionContainer {
-                    Text(
-                        text = state.tokenResponseString,
-                        textAlign = TextAlign.Center
-                    )
-                }
-            }
-        }
-
-    }
-
-    Box(modifier = modifier, contentAlignment = Alignment.BottomCenter){
-        Banner()
-    }
-
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(10.dp),
-        modifier = modifier.fillMaxWidth().padding(top = 110.dp)
-    ) {
-        RoundedLogo(drawable = R.drawable.ic_logo)
-        DaphneysCorner(text = R.string.daphneys_corner)
-    }
-
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(40.dp),
-        modifier = modifier.fillMaxWidth().padding(top = 372.dp)
-    ) {
-
-        HorizontalPartialDivider(widthDP = 321.dp)
-        AddCardButton(
-            onClick = { clicked ->
-                viewModel.setShowFinixPaymentSheetSelection(clicked)
-            }
-        )
-    }
-
 }
-
-
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
 @Composable
-fun MyAppHome() {
-    SampleTokenizeTheme() {
-        Scaffold { paddingValues ->
-        AddCardScreen(Modifier.padding(paddingValues))
+private fun MainDemoScreen(viewModel: AddCardViewModel, modifier: Modifier = Modifier) {
+    val state = viewModel.state
+
+    Scaffold(
+        modifier = modifier,
+        topBar = {
+            TopAppBar(
+                title = { Text("Finix Tokenization Demo") },
+                actions = {
+                    TextButton(onClick = viewModel::openConfiguration) {
+                        Text("Configuration")
+                    }
+                }
+            )
+        }
+    ) { paddingValues ->
+        Box(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
+            if (state.showFinixPaymentSheetSelection) {
+                PaymentSheetSelectionDialog(
+                    onSelect = viewModel::showPaymentSheet,
+                    onDismiss = { viewModel.setShowFinixPaymentSheetSelection(false) }
+                )
+            }
+
+            state.activeSheet?.let { variant ->
+                ShowPaymentSheet(
+                    variant = variant,
+                    configuration = viewModel.buildPaymentSheetConfiguration(),
+                    amount = viewModel.amountInMinorUnits(),
+                    currency = state.configForm.currency,
+                    onCancel = viewModel::dismissPaymentSheet,
+                    onSuccess = { response ->
+                        viewModel.dismissPaymentSheet()
+                        viewModel.onPaymentSheetSuccess(response)
+                    },
+                    onFailure = { error ->
+                        viewModel.dismissPaymentSheet()
+                        viewModel.onPaymentSheetFailure(error)
+                    }
+                )
+            }
+
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomCenter) {
+                Banner()
+            }
+
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+                modifier = Modifier.fillMaxWidth().padding(top = 48.dp)
+            ) {
+                RoundedLogo(drawable = R.drawable.ic_logo)
+                DaphneysCorner(text = R.string.daphneys_corner)
+            }
+
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(40.dp),
+                modifier = Modifier.fillMaxWidth().padding(top = 300.dp)
+            ) {
+                HorizontalDivider()
+                AddCardButton(
+                    onClick = { clicked ->
+                        viewModel.setShowFinixPaymentSheetSelection(clicked)
+                    }
+                )
+            }
         }
     }
 
+    state.successResponse?.let { response ->
+        ResultDialog(onDismiss = viewModel::dismissResultDialog) {
+            Text(text = "Success", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
+            LabeledValue(label = "Token ID", value = response.tokenizedResponse.id)
+            LabeledValue(
+                label = "3DS Session ID",
+                value = response.threeDSResponse?.sessionId ?: "Not created (3DS was not triggered)"
+            )
+        }
+    }
+
+    state.errorMessage?.let { message ->
+        ResultDialog(onDismiss = viewModel::dismissResultDialog) {
+            Text(
+                text = "Failed",
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Bold,
+                color = FinixErrorRed
+            )
+            Text(text = message)
+        }
+    }
 }
 
+@Composable
+private fun ResultDialog(onDismiss: () -> Unit, content: @Composable () -> Unit) {
+    Dialog(
+        onDismissRequest = onDismiss,
+        properties = DialogProperties(dismissOnBackPress = true, dismissOnClickOutside = false)
+    ) {
+        Column(
+            modifier = Modifier
+                .width(320.dp)
+                .background(White, shape = RoundedCornerShape(12.dp))
+                .padding(20.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            content()
+            Button(onClick = onDismiss, modifier = Modifier.fillMaxWidth()) {
+                Text("OK")
+            }
+        }
+    }
+}
 
+@Composable
+private fun LabeledValue(label: String, value: String) {
+    Column {
+        Text(text = label, style = MaterialTheme.typography.labelMedium)
+        SelectionContainer {
+            Text(text = value, style = MaterialTheme.typography.bodyMedium)
+        }
+    }
+}

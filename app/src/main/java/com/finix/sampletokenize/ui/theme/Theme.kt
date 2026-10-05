@@ -12,12 +12,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
-import com.finix.finixpaymentsheet.ui.theme.Pink40
-import com.finix.finixpaymentsheet.ui.theme.Pink80
-import com.finix.finixpaymentsheet.ui.theme.Purple40
-import com.finix.finixpaymentsheet.ui.theme.PurpleGrey40
-import com.finix.finixpaymentsheet.ui.theme.PurpleGrey80
-
 
 private val DarkColorPalette2 = darkColors(
     primary = Purple200,
@@ -91,12 +85,6 @@ private val LightColorScheme = lightColorScheme(
     onSurfaceVariant = Color.Black,//THIS CHANGES OUR BACKGROUND COLOR
 )
 
-private val LightColorScheme2 = lightColorScheme(
-    primary = Color.LightGray,
-    surfaceVariant = Color.White,
-    onSurfaceVariant = FinixBlue,//THIS
-)
-
 @Composable
 fun SampleTokenizeTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -122,29 +110,3 @@ fun SampleTokenizeTheme(
         content = content
     )
 }
-
-
-@Composable
-fun SampleTokenizeTheme2(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
-) {
-    val colorScheme = LightColorScheme2
-    val view = LocalView.current
-    if (!view.isInEditMode) {
-        SideEffect {
-            (view.context as Activity).window.statusBarColor = colorScheme.primary.toArgb()
-            ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = false
-        }
-    }
-
-    androidx.compose.material3.MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
-    )
-}
-
-
-

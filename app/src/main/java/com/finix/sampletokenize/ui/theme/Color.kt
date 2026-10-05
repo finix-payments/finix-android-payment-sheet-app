@@ -8,6 +8,14 @@ val Purple500 = Color(0xFF6200EE)
 val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
 
+// These used to be re-exported by the finix-payment-sheet library's own theme package;
+// that package was removed as part of the CP-3097 3DS UI rework, so they're defined locally now.
+val Purple40 = Color(0xFF6650A4)
+val PurpleGrey40 = Color(0xFF625B71)
+val PurpleGrey80 = Color(0xFFCCC2DC)
+val Pink40 = Color(0xFF7D5260)
+val Pink80 = Color(0xFFEFB8C8)
+
 val Navy = Color(0xFF073042)
 val Blue = Color(0xFF4285F4)
 val LightBlue = Color(0xFFD7EFFE)
