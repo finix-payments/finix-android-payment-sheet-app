@@ -1,64 +1,49 @@
 package com.finix.sampletokenize.ui.compose.addCard
 
+import com.finix.finixpaymentsheet.PaymentSheetEnvironment
+import com.finix.finixpaymentsheet.PaymentSheetResponse
 
-import com.finix.finixpaymentsheet.domain.model.PaymentSheetResources
-import com.finix.finixpaymentsheet.domain.model.PaymentSheetColors
-import com.finix.finixpaymentsheet.domain.model.tokenize.TokenizedResponse
+enum class DemoScreen {
+    MAIN,
+    CONFIGURATION
+}
 
+enum class PaymentSheetVariant(val label: String) {
+    COMPLETE("Complete Payment Sheet"),
+    PARTIAL("Partial Payment Sheet"),
+    BASIC("Basic Payment Sheet"),
+    MINIMAL("Minimal Payment Sheet"),
+    INTERNATIONAL("International Payment Sheet")
+}
+
+/**
+ * Values entered on the configuration screen. `merchantId`, `apiUsername` and `apiPassword`
+ * are required by the library whenever 3DS is enabled (they're used to authenticate the
+ * 3DS session network calls). The 3DS redirect scheme itself isn't part of this form -- it's
+ * fixed to this app (see [com.finix.sampletokenize.ui.compose.addCard.THREE_DS_REDIRECT_SCHEME]),
+ * since it's how the library's in-app 3DS challenge WebView recognizes the challenge finished.
+ */
+data class PaymentSheetConfigState(
+    val applicationId: String = "APjMB6owJ7542dehJ6hCojzR",
+    val environment: PaymentSheetEnvironment = PaymentSheetEnvironment.SANDBOX,
+    val merchantId: String = "",
+    val apiUsername: String = "",
+    val apiPassword: String = "",
+    val currency: String = "USD",
+    val amount: String = "10.00",
+    val threeDSEnabled: Boolean = false
+) {
+    val isAmountValid: Boolean
+        get() = amount.toBigDecimalOrNull() != null
+}
 
 data class AddCardState(
-
-    val tokenResponseString: String = "",
-    val tokenResponse: TokenizedResponse? = null,
+    val screen: DemoScreen = DemoScreen.MAIN,
+    val configForm: PaymentSheetConfigState = PaymentSheetConfigState(),
 
     val showFinixPaymentSheetSelection: Boolean = false,
+    val activeSheet: PaymentSheetVariant? = null,
 
-    val showCompletePaymentSheetOutlined: Boolean = false,
-    val showPartialPaymentSheetOutlined: Boolean = false,
-    val showBasicPaymentSheetOutlined: Boolean = false,
-    val showMinimalPaymentSheetOutlined: Boolean = false,
-
-    val showCompletePaymentSheet: Boolean = false,
-    val showPartialPaymentSheet: Boolean = false,
-    val showBasicPaymentSheet: Boolean = false,
-    val showMinimalPaymentSheet: Boolean = false,
-
-
-    /**
-     * PaymentSheetResources
-     * Customize resources
-     *
-     * DEFAULTS:
-        @DrawableRes val logoDrawable: Int = R.drawable.ic_default_logo,
-        @StringRes val logoText: Int = R.string.default_logo_text,
-        @StringRes val tokenizeButtonText: Int = R.string.btn_tokenize,
-        @StringRes val cancelButtonText: Int = R.string.btn_cancel,
-     *
-     */
-    val paymentSheetResources: PaymentSheetResources = PaymentSheetResources(),
-
-
-    /**
-     * paymentSheetColors
-     * Add custom colors to your paymentsheet
-     *
-     * DEFAULTS:
-        val surface: Color = Color.White, -> Represents the color used for the background payment sheet
-        val textColor: Color = Color.Black, -> Represents the color used for the input text of this text field
-        val containerColor: Color = FinixGray, -> Represents the color used as the surface of the textfield
-        val errorContainerColor: Color = FinixErrorTextSurface, -> Represents the color used as the surface of the textfield when in error state
-        val errorBorderColor: Color = FinixErrorRed, -> Represents the color used for the border indicator of this text field when in error state
-        val focusedIndicatorColor: Color = FinixBlue, -> Represents the color used for the border indicator of this text field when in focus
-        val unfocusedIndicatorColor: Color = Color.Transparent, -> Represents the color used for the border indicator of this text field when out of focus
-        val focusedLabelColor: Color = FinixBlue, -> Represents the color used for the label of this text field when focused
-        val unfocusedLabelColor: Color = Color.Black, -> Represents the color used for the label of this text field when out of focus
-        val errorLabelColor: Color = FinixErrorRed, -> Represents the color used for the label of this text field when in error state
-        val placeholderColor: Color = FinixPlaceHolderTextGray, -> Represents the color used for the placeholder of this text field
-        val tokenizeButtonColor: Color = FinixBlue, -> Represents the surface color used for tokenize button
-        val tokenizeButtonTextColor: Color = Color.White, -> Represents the text color used for tokenize button
-        val cancelButtonColor: Color = FinixRed, -> negative Represents the surface color used for cancel button
-        val cancelButtonTextColor: Color = Color.White, -> Represents the text color used for cancel button
-     */
-    val paymentSheetColors: PaymentSheetColors = PaymentSheetColors(),
+    val successResponse: PaymentSheetResponse? = null,
+    val errorMessage: String? = null
 )
-
