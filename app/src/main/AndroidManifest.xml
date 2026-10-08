@@ -19,7 +19,6 @@
         <activity
             android:name="com.finix.sampletokenize.ui.activity.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.SampleTokenize"
             android:windowSoftInputMode="stateUnchanged">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
