@@ -30,7 +30,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.finix.sampletokenize.R
 import com.finix.sampletokenize.ui.compose.addCard.components.PaymentSheetSelectionDialog
 import com.finix.sampletokenize.ui.compose.addCard.components.ShowPaymentSheet
-import com.finix.sampletokenize.ui.compose.common.HorizontalPartialDivider
 import com.finix.sampletokenize.ui.compose.configuration.ConfigurationScreen
 import com.finix.sampletokenize.ui.theme.FinixErrorRed
 import com.finix.sampletokenize.ui.theme.White
@@ -60,7 +59,7 @@ private fun MainDemoScreen(viewModel: AddCardViewModel, modifier: Modifier = Mod
     val state = viewModel.state
 
     Scaffold(
-        modifier = modifier,
+        modifier = modifier.fillMaxSize(),
         topBar = {
             TopAppBar(
                 title = { Text("Finix Tokenization Demo") },
@@ -108,7 +107,6 @@ private fun MainDemoScreen(viewModel: AddCardViewModel, modifier: Modifier = Mod
                 modifier = Modifier.fillMaxWidth().padding(top = 48.dp)
             ) {
                 RoundedLogo(drawable = R.drawable.ic_logo)
-                DaphneysCorner(text = R.string.daphneys_corner)
             }
 
             Column(
