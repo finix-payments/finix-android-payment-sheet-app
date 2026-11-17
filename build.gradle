@@ -31,3 +31,9 @@ allprojects {
         disabledRules.set(["no-wildcard-imports"])
     }
 }
+
+tasks.named('wrapper') {
+    doFirst { Wrapper w ->
+        w.distributionUrl = "https://finix.repo.sonatype.app/repository/gradle-distributions/distributions/gradle-${w.gradleVersion}-${w.distributionType.name().toLowerCase()}.zip"
+    }
+}
